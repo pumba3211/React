@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import "./index.css";
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -13,19 +13,19 @@ function App() {
 
 function Menu() {
   return (
-    <main>
+    <main className="menu">
       <h2>Our menu</h2>
       <Pizza
         name="Pizza Spinaci"
         ingredients="Tomato, mozarella , Tomato, mozarella , spinach, and ricotta cheese"
         photoName="pizzas/spinaci.jpg"
-        price="10"
+        price={10}
       ></Pizza>
       <Pizza
         name="Pizza Funghi"
         ingredients="Tomato, mushrooms"
         photoName="pizzas/funghi.jpg"
-        price="12"
+        price={12}
       ></Pizza>
     </main>
   );
@@ -33,16 +33,23 @@ function Menu() {
 
 function Pizza(props) {
   return (
-    <div>
+    <div className="pizza">
       <img src={props.photoName} alt={props.name}></img>
-      <h3>{props.name}</h3>
-      <p>{props.ingredients}</p>
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>{props.price}</span>
+      </div>
     </div>
   );
 }
 
 function Header() {
-  return <h1>Fast React Pizza Co.</h1>;
+  return (
+    <header className="header">
+      <h1>Fast React Pizza Co.</h1>
+    </header>
+  );
 }
 
 function Footer() {
@@ -52,7 +59,7 @@ function Footer() {
   const isOpen = hour >= openHour && hour <= closeHour;
   const openText = isOpen ? "We're currently open!!!" : "We are close";
   return (
-    <footer>
+    <footer className="footer">
       {new Date().toLocaleTimeString()}. {openText}
     </footer>
   );
